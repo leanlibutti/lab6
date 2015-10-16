@@ -1,0 +1,21 @@
+<h1> TWEETS </h1>
+<class="table">
+<table>
+	<tr>
+		<th>Monstruo</th>
+		<th>Estado</th>
+		<th>Pelicula Favorita</th>
+	</tr>
+	<% Tweet.all.each do |tweet| %>
+		<% m= Monstruo.find(tweet.monstruo_id) %>
+		<tr>
+			<% if m.nombre == "Drácula" then %>
+				<td> <p style="color:red"> <%= m.nombre %> </p> </td>
+			<% else %>
+				<td> <%= m.nombre %> </td>
+			<% end %>
+			<td> <%= tweet.estado %> </td>
+			<td> <%= link_to m.pelicula_favorita, m.pelicula_url %> </td>
+		</tr>
+	<% end %>
+</table>
